@@ -18,4 +18,10 @@ class HelloController
     {
         return new Response( content: 'Olá, Dinoussauro!');
     }
+
+    #[Route('/mamifero')]
+    public function mamifero(): Response
+    {
+        return new Response( content: 'Olá, Mamífero!');
+    }
 }
