@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use function Symfony\Component\String\u;
 
 class HelloController
 {
@@ -48,4 +49,13 @@ class HelloController
     {
         return new Response( content: 'Olá, Caninos!');
     }
+
+    #[Route('/animal/{slug}')]
+    public function animal(string $slug=null): Response
+    {
+        $newSlug = str_replace(search: '-',replace: ' ',subject: $slug);
+        $newSlug = u($newSlug)->title(true);
+        return new Response( content: 'Olá, '.$newSlug);
+    }
+
 }
